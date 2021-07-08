@@ -86,7 +86,7 @@ Similarly we can control the angular movement of Servo motor or any other sensor
    ``` 
    
   ### Sleeping Mode 
-  Arduino allows using many different types of sleeping modes, but for this project, The Power Down mode was used (SLEEP_MODE_PWR_DOWN), mainly because it saves most of the power. Also, the LCD screen was turned off while in sleeping mode. The button was connected to interrupt to wake up Arduino (when pressed). 
+  **NOTE**:Arduino allows using many different types of sleeping modes, but for this project, The Power Down mode was used (SLEEP_MODE_PWR_DOWN), mainly because it saves most of the power. Also, the LCD screen was turned off while in sleeping mode. The button was connected to interrupt to wake up Arduino (when pressed). 
   
   ```
   void Going_To_Sleep(){
@@ -115,6 +115,7 @@ void wakeUp(){
   detachInterrupt(digitalPinToInterrupt(2)); //Removes the interrupt from pin 2;
 }
 ```
+:
 -In [tutorial1](https://thekurks.net/blog/2018/1/24/guide-to-arduino-sleep-mode) is more about sleeping mode (used with Arduino Mega) 
 -[Tutorial2](https://thekurks.net/blog/2016/4/25/using-interrupts) explains the concept of interrupts 
 -[Tutorial3](https://thekurks.net/blog/2018/2/5/wakeup-rtc-datalogger) presents the way of using sleeping Mode with the real time clock RTC 
