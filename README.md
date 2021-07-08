@@ -164,5 +164,9 @@ function Decoder(bytes, port) {
     
 }
 ```
-**NOTE**: Used code is a little redundant because it reads data from a payload of 4 bytes as well as 1 byte and 5 bytes (different ways of transmitting data). For the project, data stored in a 5-byte payload was sent. The disadvantage of this method is that if another data stored in 5 bytes were sent (from different sensors) then an unexpected message could be displayed. 
+**NOTE**: Used code is a little redundant because it reads data from a payload of 4 bytes as well as 1 byte and 5 bytes (different ways of transmitting data). For the project, data stored in a 5-byte payload was sent. The disadvantage of this method is that if another data stored in 5 bytes were sent (from different sensors) then an unexpected message could be displayed. Data for humidity and temperature was stored in high and low bytes. More about them can be found [here](https://chortle.ccsu.edu/java5/Notes/chap85/ch85_12.html)
+
+Displayed data looks like this: 
+![image](https://user-images.githubusercontent.com/87130809/125003680-9e6e5080-e04f-11eb-9658-67b3624e8ea3.png)
+
   
