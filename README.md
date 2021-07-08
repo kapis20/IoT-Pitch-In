@@ -5,6 +5,7 @@ This Arduino code uses various sensors and LCD, to transmit and receive data fro
 
 Additionally, Arduino was put into sleep mode and save some power. During the project, humidity, temperature and distance were send to ttn.
 
-#Components used and connection:
+# Components and connections 
+-The things Uno - 
 ![image](https://user-images.githubusercontent.com/87130809/124950756-9cce6980-e00a-11eb-8736-b695d2ceb0e0.png)
 
