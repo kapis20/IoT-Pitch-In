@@ -125,4 +125,44 @@ void wakeUp(){
 **NOTE**: For various boards, there are different interrupts pins available, presented in the table below: 
 ![image](https://user-images.githubusercontent.com/87130809/124982506-ae296d00-e02e-11eb-960c-0e498c5ac92e.png)
 
+## The Things Stack
+### Payload Formatters 
+To display payload in readable format function formatters can be used. In the project, javascript was used to create the decoder function. They are different ways, but this is the most common and the easiest to comprehend. I used the code below: 
+```
+function Decoder(bytes, port) {
+    if(bytes.length == 1) {
+        var distance= (bytes[0]);
+             return {   'Distance' : distance
+            };
+       
+            
+        
+    } else if(bytes.length == 4) {
+        var humidity = (bytes[0]<<8) | bytes[1];
+        var temperature = (bytes[2]<<8) | bytes[3];
+        return {
+            'humidity': humidity/ 100,
+            'temperature': temperature/100
+        };
+        
+    }else if(bytes.length == 5){
+        var Humidity = (bytes[0]<<8) | bytes[1];
+        var Temperature = (bytes[2]<<8) | bytes[3];
+        var Distance= (bytes[4]);
+        return{
+            'humidity': Humidity/ 100,
+            'temperature': Temperature/100,
+            'Distance' : Distance
+        };
+    
+        
+    } else {
+     
+             return {  
+            'error': 'unknown '};
+        }
+    
+}
+```
+**NOTE**: Used code is a little redundant because it reads data from a payload of 4 bytes as well as 1 byte and 5 bytes (different ways of transmitting data). For the project, data stored in a 5-byte payload was sent. The disadvantage of this method is that if another data stored in 5 bytes were sent (from different sensors) then an unexpected message could be displayed. 
   
