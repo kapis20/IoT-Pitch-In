@@ -43,6 +43,7 @@ Additionally, Arduino was put into sleep mode and save some power. During the pr
 In this tutorial the way of registering the end node to The Things Network (although, it's not supported anymore) https://www.thethingsnetwork.org/docs/devices/node/quick-start/
 The method is the same for The things Stack 
 
+| --- |
 
 
 
