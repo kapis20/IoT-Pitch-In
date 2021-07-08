@@ -26,12 +26,13 @@ Additionally, Arduino was put into sleep mode and save some power. During the pr
 
 # Code 
 ### Libraries used: 
+```
 <LiquidCrystal.h> - for LCD screen 
 <avr/sleep.h> -  library contains the methods that controls the sleep modes
 <DHT.h>
 <DHT_U.h> - for Temp and Hum sensor 
 <TheThingsNetwork.h> - to connect to Lora Network 
-
+```
 ### Connecting to The Things Stack 
 #define loraSerial Serial1
 #define debugSerial Serial
