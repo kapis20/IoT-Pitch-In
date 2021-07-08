@@ -63,6 +63,7 @@ In this [tutorial](https://www.thethingsnetwork.org/docs/devices/node/quick-star
 In setup : 
  ttn.onMessage(message); // passing function to handle downlink data
  and function to control LEDs: 
+ void message(const uint8_t *payload, size_t size, port_t port){ 
  if(payload[0]==1){
   digitalWrite(LED_GREEN, LOW); 
   digitalWrite(LED_RED, HIGH);
@@ -77,4 +78,48 @@ else {
 }
 }
 ```
+Similarly we can control the angular movement of Servo motor or any other sensor e.g
+```
+  myServo.write(payload[0]);
+  delay(2000); //necessary delay for servo to move
+   myServo.write(0); 
+   ``` 
+   
+  ### Sleeping Mode 
+  Arduino allows using many different types of sleeping modes, but for this project, The Power Down mode was used (SLEEP_MODE_PWR_DOWN), mainly because it saves most of the power. Also, the LCD screen was turned off while in sleeping mode. The button was connected to interrupt to wake up Arduino (when pressed). 
+  
+  ```
+  void Going_To_Sleep(){
+    sleep_enable();//Enabling sleep mode
+    attachInterrupt(digitalPinToInterrupt(2), wakeUp, LOW);//attaching a interrupt 1 to pin d2
+    set_sleep_mode(SLEEP_MODE_PWR_DOWN);//Setting the sleep mode, in our case full sleep
+    delay(1000); //wait a second to allow the led to be turned off before going to sleep
+    digitalWrite(LED_RED,LOW);
+    digitalWrite(LED_GREEN,LOW);
+    analogWrite(Backlight,0); 
+    analogWrite(Contrast,255); // both turn off the LCD screen 
+    sleep_cpu();//activating sleep mode
+    lcd.print("woke up");
+    delay(2000);
+    lcd.clear();
+    
+  }
 
+void wakeUp(){
+    analogWrite (Backlight,255);
+    analogWrite (Contrast,100);
+
+  delay(2000);
+  lcd.clear();
+   sleep_disable();//Disable sleep mode
+  detachInterrupt(digitalPinToInterrupt(2)); //Removes the interrupt from pin 2;
+}
+```
+In [tutorial1](https://thekurks.net/blog/2018/1/24/guide-to-arduino-sleep-mode) is more about sleeping mode (used with Arduino Mega) 
+[Tutorial2](https://thekurks.net/blog/2016/4/25/using-interrupts) explains the concept of interrupts 
+[Tutorial3](https://thekurks.net/blog/2018/2/5/wakeup-rtc-datalogger) presents the way of using sleeping Mode with the real time clock RTC 
+
+For various boards, there are different interrupts pins available, presented in the table below: 
+![image](https://user-images.githubusercontent.com/87130809/124982506-ae296d00-e02e-11eb-960c-0e498c5ac92e.png)
+
+  
