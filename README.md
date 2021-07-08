@@ -8,7 +8,7 @@ Additionally, Arduino was put into sleep mode and save some power. During the pr
 # Components and connections 
 ### Components 
 -The things Uno: The Arduino Leonardo board with built in Microchip Lorawan module. (Arduino Uno or any other board with appropiate shield could be also used).
- Here is a shield that can be used with European frequency (compatible with most of the Arduino boards) - https://www.thethingsnetwork.org/marketplace/product/iot-lora-node-shield
+ Here is a [shield](https://www.thethingsnetwork.org/marketplace/product/iot-lora-node-shield) that can be used with European frequency (compatible with most of the Arduino boards)
 -DHT 11- Humidity and Temperature Sensor 
 - LCD1602 Module
 - Ultrasonic Sensor - HC-SRO4
@@ -41,13 +41,40 @@ Additionally, Arduino was put into sleep mode and save some power. During the pr
 #define freqPlan TTN_FP_EU868
 
 TheThingsNetwork ttn(loraSerial, debugSerial, freqPlan);
-ttn.join(appEui, appKey);
+ttn.join(appEui, appKey); // in Setup, the rest above 
 ```
 In this [tutorial](https://www.thethingsnetwork.org/docs/devices/node/quick-start/) the way of registering the end node to The Things Network (although, it's not supported anymore). The method is the same for The things Stack 
 
 
+### Sending data 
 
+```
+  void Transmit_Data(byte data[], int size1){
+     ttn.sendBytes(data, size1);
+      delay(1000);
+    }
+   //Function that collect an array and the size of it and sends bytes (that's the only way of transmiting)
+   ```
+   
+   
+### Receiving data 
 
-
-
+``` 
+In setup : 
+ ttn.onMessage(message); // passing function to handle downlink data
+ and function to control LEDs: 
+ if(payload[0]==1){
+  digitalWrite(LED_GREEN, LOW); 
+  digitalWrite(LED_RED, HIGH);
+}
+else if(payload[0] == 2) {
+   digitalWrite(LED_GREEN, HIGH); 
+  digitalWrite(LED_RED, HIGH); 
+}
+else {
+   digitalWrite(LED_GREEN, LOW); 
+   digitalWrite(LED_RED, LOW);
+}
+}
+```
 
