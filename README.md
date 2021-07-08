@@ -43,7 +43,7 @@ Additionally, Arduino was put into sleep mode and save some power. During the pr
 TheThingsNetwork ttn(loraSerial, debugSerial, freqPlan);
 ttn.join(appEui, appKey); // in Setup, the rest above 
 ```
-In this [tutorial](https://www.thethingsnetwork.org/docs/devices/node/quick-start/) the way of registering the end node to The Things Network (although, it's not supported anymore). The method is the same for The things Stack 
+**NOTE**: In this [tutorial](https://www.thethingsnetwork.org/docs/devices/node/quick-start/) the way of registering the end node to The Things Network (although, it's not supported anymore). The method is the same for The things Stack 
 
 
 ### Sending data 
@@ -86,7 +86,7 @@ Similarly we can control the angular movement of Servo motor or any other sensor
    ``` 
    
   ### Sleeping Mode 
-  **NOTE**:Arduino allows using many different types of sleeping modes, but for this project, The Power Down mode was used (SLEEP_MODE_PWR_DOWN), mainly because it saves most of the power. Also, the LCD screen was turned off while in sleeping mode. The button was connected to interrupt to wake up Arduino (when pressed). 
+  **NOTE**: Arduino allows using many different types of sleeping modes, but for this project, The Power Down mode was used (SLEEP_MODE_PWR_DOWN), mainly because it saves most of the power. Also, the LCD screen was turned off while in sleeping mode. The button was connected to interrupt to wake up Arduino (when pressed). 
   
   ```
   void Going_To_Sleep(){
@@ -115,12 +115,14 @@ void wakeUp(){
   detachInterrupt(digitalPinToInterrupt(2)); //Removes the interrupt from pin 2;
 }
 ```
-:
+
 -In [tutorial1](https://thekurks.net/blog/2018/1/24/guide-to-arduino-sleep-mode) is more about sleeping mode (used with Arduino Mega) 
+
 -[Tutorial2](https://thekurks.net/blog/2016/4/25/using-interrupts) explains the concept of interrupts 
+
 -[Tutorial3](https://thekurks.net/blog/2018/2/5/wakeup-rtc-datalogger) presents the way of using sleeping Mode with the real time clock RTC 
 
-For various boards, there are different interrupts pins available, presented in the table below: 
+**NOTE**: For various boards, there are different interrupts pins available, presented in the table below: 
 ![image](https://user-images.githubusercontent.com/87130809/124982506-ae296d00-e02e-11eb-960c-0e498c5ac92e.png)
 
   
