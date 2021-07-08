@@ -34,17 +34,19 @@ Additionally, Arduino was put into sleep mode and save some power. During the pr
 <TheThingsNetwork.h> - to connect to Lora Network 
 ```
 ### Connecting to The Things Stack 
+```
 #define loraSerial Serial1
 #define debugSerial Serial
 // Replace REPLACE_ME with TTN_FP_EU868 or TTN_FP_US915
 #define freqPlan TTN_FP_EU868
 
-
-
+TheThingsNetwork ttn(loraSerial, debugSerial, freqPlan);
+ttn.join(appEui, appKey);
+```
 In this tutorial the way of registering the end node to The Things Network (although, it's not supported anymore) https://www.thethingsnetwork.org/docs/devices/node/quick-start/
 The method is the same for The things Stack 
 
-| --- |
+
 
 
 
