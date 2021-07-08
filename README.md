@@ -169,4 +169,9 @@ function Decoder(bytes, port) {
 Displayed data looks like this: 
 ![image](https://user-images.githubusercontent.com/87130809/125003680-9e6e5080-e04f-11eb-9658-67b3624e8ea3.png)
 
+### Sending messege from ttn 
+To transmit bytes from ttn we click the end node -> messeging -> Downlink -> Payload (**Hex** used for scheduling) 
+![image](https://user-images.githubusercontent.com/87130809/125004029-7d5a2f80-e050-11eb-91d1-cb36ab172674.png)
+
+
   
