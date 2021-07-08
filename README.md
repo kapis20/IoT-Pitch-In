@@ -8,7 +8,6 @@ Additionally, Arduino was put into sleep mode and save some power. During the pr
 # Components and connections 
 -The things Uno: The Arduino Leonardo board with built in Microchip Lorawan module. (Arduino Uno or any other board with appropiate shield could be also used) 
 Here is a shield that can be used with European frequency (compatible with most of the Arduino boards) - https://www.thethingsnetwork.org/marketplace/product/iot-lora-node-shield
-
 -DHT 11- Humidity and Temperature Sensor 
 - LCD1602 Module
 - Ultrasonic Sensor - HC-SRO4
