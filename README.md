@@ -217,8 +217,8 @@ msg.payload = {
     Distance : msg.payload.uplink_message.decoded_payload["Distance"]
 }
 return msg;
-
 ``
+
 Shows object in the form: 
 ![image](https://user-images.githubusercontent.com/87130809/125010535-9e298180-e05e-11eb-867f-b37b8f6466f4.png)
 
