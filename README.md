@@ -6,6 +6,8 @@ This Arduino code uses various sensors and LCD, to transmit and receive data fro
 
 Additionally, Arduino was put into sleep mode and save some power. During the project, humidity, temperature and distance were send to ttn.
 
+Then the data was retrived using node js and node red 
+
 # Components and connections 
 ### Components 
 -The things Uno: The Arduino Leonardo board with built in Microchip Lorawan module. (Arduino Uno or any other board with appropiate shield could be also used).
@@ -146,9 +148,8 @@ void Take_Medicine_Reminder(){
     else if(button2 == HIGH){
       return;}
     }}
-    
-    ```
-
+   
+```
 ## The Things Stack
 ### Payload Formatters 
 To display payload in readable format function formatters can be used. In the project, javascript was used to create the decoder function. They are different ways, but this is the most common and the easiest to comprehend. I used the code below: 
@@ -196,6 +197,31 @@ Displayed data looks like this:
 ### Sending messege from ttn 
 To transmit bytes from ttn we click the end node -> messeging -> Downlink -> Payload (**Hex** used for scheduling) 
 ![image](https://user-images.githubusercontent.com/87130809/125004029-7d5a2f80-e050-11eb-91d1-cb36ab172674.png)
+
+
+#Retriving data from the Things Stack 
+##Node Red 
+
+It can be installed and set up by using this [tutorial](https://nodered.org/docs/getting-started/local) and then started by using [tutorial2](https://nodered.org/docs/tutorials/first-flow)
+
+Messeges were received by using mqtt, and here is [tutorial3](https://www.thethingsindustries.com/docs/integrations/node-red/receive/) presenting that.
+
+![image](https://user-images.githubusercontent.com/87130809/125010452-733f2d80-e05e-11eb-892d-60da5d2efdb9.png)
+
+**Note**: Decoder used: 
+``
+msg.payload = {
+
+    Temperature : msg.payload.uplink_message.decoded_payload["temperature"],
+    Humidity : msg.payload.uplink_message.decoded_payload["humidity"],
+    Distance : msg.payload.uplink_message.decoded_payload["Distance"]
+}
+return msg;
+
+``
+Shows object in the form: 
+![image](https://user-images.githubusercontent.com/87130809/125010535-9e298180-e05e-11eb-867f-b37b8f6466f4.png)
+
 
 
   
