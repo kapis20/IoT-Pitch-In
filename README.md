@@ -1,9 +1,10 @@
-# IoT-Pitch-In
+# IoT-Pitch-In - Internship 
+# Monitoring the temperature, humidity, distance with some extra functionality 
 
-Purpose: 
-This Arduino code uses various sensors and LCD, to transmit and receive data from the ttn (The Things Stack). The received data is used to control LEDs. I will also show the technique to control the angular movement of the servo. Similar principles can be applied to any Arduino board with different sensors mounted. 
+**Purpose: 
+This Arduino code uses various sensors and LCD, to transmit and receive data from the ttn (The Things Stack). The received data is used to control LEDs. I will also show the technique to control the angular movement of the servo. Similar principles can be applied to any Arduino board with different sensors mounted. **
 
-Additionally, Arduino was put into sleep mode and save some power. During the project, humidity, temperature and distance were send to ttn.
+**Additionally, Arduino was put into sleep mode and save some power. During the project, humidity, temperature and distance were send to ttn.**
 
 # Components and connections 
 ### Components 
@@ -124,6 +125,29 @@ void wakeUp(){
 
 **NOTE**: For various boards, there are different interrupts pins available, presented in the table below: 
 ![image](https://user-images.githubusercontent.com/87130809/124982506-ae296d00-e02e-11eb-960c-0e498c5ac92e.png)
+
+### Reminder Function 
+Purpose: To decide whether generate a sound signal, the idea was to show that reminder, whether to take medicine, can be used with Arduino. Instead of the buzzer, it could be a loudspeaker, and instead of buttons, RTC can be used to set up an alarm at a specified time. 
+
+```
+void Take_Medicine_Reminder(){
+  int button1 =0;
+  int button2 = 0;
+  while(1){
+    button1=digitalRead(Get_data_button);
+    button2 =digitalRead(button_to_skip_buzzer);
+    if (button1== HIGH){
+        tone(buzzer_pin, 1500); // Send 1KHz sound signal...
+        delay(1000);        // ...for 1 sec
+        noTone(buzzer_pin);     // Stop sound...
+        delay(1000);        // ...for 1sec    
+      return;
+    }
+    else if(button2 == HIGH){
+      return;}
+    }}
+    
+    ```
 
 ## The Things Stack
 ### Payload Formatters 
